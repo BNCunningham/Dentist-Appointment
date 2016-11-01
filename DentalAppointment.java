@@ -47,5 +47,16 @@ Time end;
     duration = 30;
     
   }
+  public void Display(){
+    person.Display();
+    time.Display();
+    date.Display();
+    end.Display();
+  }
 
+  public static void main(String[] args)
+  {
+      Scanner sc = new Scanner(System.in);
+
+  }
 }
