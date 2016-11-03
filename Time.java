@@ -56,10 +56,10 @@ public class Time{
 
   public void Display(){
     if(minutes < 10){
-      System.out.println(this.getHours() + ":0" + this.getMinutes());
+      System.out.print(this.getHours() + ":0" + this.getMinutes());
     }
     else{
-      System.out.println(this.getHours() + ":" + this.getMinutes());
+      System.out.print(this.getHours() + ":" + this.getMinutes());
     }
   }
 
