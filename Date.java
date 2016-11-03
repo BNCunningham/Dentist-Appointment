@@ -40,6 +40,6 @@ public class Date
   }
   public void Display()
   {
-    System.out.println(this.getMonth() + "/" + this.getDay() + "/" + this.getYear());
+    System.out.print(this.getMonth() + "/" + this.getDay() + "/" + this.getYear());
   }
 }
