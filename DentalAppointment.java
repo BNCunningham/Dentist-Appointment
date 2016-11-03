@@ -4,25 +4,35 @@ import java.util.Scanner;
 
 public class DentalAppointment{
 
-Person patient;
+Person person;
 Date date;
 Time time;
 int duration;
-//Time end;
+Time end;
+
+String firstname;
+String lastname;
+String zipcode;
+int day;
+int month;
+int year;
+int hours;
+int minutes;
 
 
-  public DentalAppointment(Person patient, Date date, Time time, int duration)
+  public DentalAppointment(Person person, Date date, Time time, Time end)
   {
-    this.patient = patient;
+    this.person = person;
     this.date = date;
     this.time = time;
-    this.duration = 30;
+    this.end = end;
     //this.end = end;
     //end.add(duration);
-
   }
-  public DentalAppointment(String firstname, String lastname, String zipcode, String day, String month, String year, int hours, int minutes, int duration)
+
+  public DentalAppointment(String firstname, String lastname, String zipcode, int day, int month, int year, int hours, int minutes, int duration)
   {
+
     this.firstname = firstname;
     this.lastname = lastname;
     this.zipcode = zipcode;
@@ -31,13 +41,32 @@ int duration;
     this.year = year;
     this.hours = hours;
     this.minutes = minutes;
-    duration = 30;
+    this.duration = 30;
 
   }
 
-  public void main(String[] args)
+  public Person getPerson(){
+    return person;
+  }
+
+  public Date getDate(){
+    return date;
+  }
+
+  public Time getTime(){
+    return time;
+  }
+
+  public Time getEnd(){
+    return end;
+  }
+
+  public static void main(String[] args)
   {
+
       Scanner sc = new Scanner(System.in);
+
+      for(int i = 0; i < 3; i++){
 
       System.out.print("First name (optional; empty will return \"X\"): ");
       String firstname = sc.nextLine();
@@ -76,11 +105,11 @@ int duration;
 
 
       System.out.print("Please enter a duration between 30 and 240 minutes: ");
-      duration = sc.nextInt();
+      int duration = sc.nextInt();
 
       if(duration <= 240)
       {
-        this.duration = duration;
+        duration = duration;
       }
       else
       {
@@ -92,60 +121,31 @@ int duration;
             duration = sc.nextInt();
           }
         }
-        else if(Integer.toString(duration.length()) < 1){
+        else if(Integer.toString(duration) == ""){
         System.out.println("Appointment duration has been automatically set to 30 minutes.");
         duration = 30;
         }
       }
 
-      int endhour = hours;
-      int endmin = minutes + duration;
+      Time end = new Time(hours,minutes);
 
-      if(endmin > 60){
-        if(endmin >= 60 && endmin < 120){
-          endhour = endhour + 1;
-          endmin = endmin - 60;
-          if(endhour == 24){
-            endhour = 0;
-          }
-        }
-        if(endmin >= 120 && endmin < 180){
-          endhour = endhour + 2;
-          endmin = endmin - 120;
-          if(endhour == 25){
-            endhour = 1;
-          }
-        }
-        if(endmin >= 180 && endmin < 240){
-          endhour = endhour + 3;
-          endmin = endmin - 180;
-          if(endhour == 26){
-            endhour = 2;
-          }
-        }
-        if(endmin == 240){
-          endhour = endhour + 4;
-          endmin = endmin - 240;
-          if(endhour == 27){
-            endhour = 3;
-          }
-        }
-      }
+      DentalAppointment newapp = new DentalAppointment(person,date,time,end);
 
-      Time end = new Time(endhour,endmin);
+      newapp.Display();
 
-        person.Display();
-        time.Display();
-        date.Display();
-        end.Display();
+    }
 
   }
 
   public void Display(){
 
-    System.out.println(this.Person());
-    System.out.println(this.Date());
-    System.out.println(this.Time());
-    System.out.println(this.Time());
+    /*System.out.println(this.getPerson());
+    System.out.println(this.getDate());
+    System.out.println(this.getTime());
+    System.out.println(this.getEnd());*/
+
+    System.out.println("Appointment for " + firstname + " " + lastname + " (Zipcode " + zipcode + "):");
+    System.out.println("Appointment takes place on " + this.getDate() + " at " + this.getTime() + " and will last for " + duration + " minutes.");
+    System.out.println("The appointment will last until " + this.getEnd() + ".");
   }
 }

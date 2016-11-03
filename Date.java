@@ -33,12 +33,12 @@ public class Date
   }
   public static void main(String args [])
   {
-    Date fate = new Date();
-    Date deet = new Date(5, 6, 7854);
-    fate.pnt();
-    deet.pnt();
+    Date defaultdate = new Date();
+    Date exampledate = new Date(5, 6, 7854);
+    defaultdate.Display();
+    exampledate.Display();
   }
-  public void pnt()
+  public void Display()
   {
     System.out.println(this.getMonth() + "/" + this.getDay() + "/" + this.getYear());
   }
