@@ -1,1 +1,1 @@
-the dentist appointment is pretty rad  ¯\_(ツ)_/¯
+the dentist appointment is pretty rad ツ
